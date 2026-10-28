@@ -43,55 +43,6 @@ I built this tool to automate the manual inspection workflow: ripping apart the 
 
 ![Phishing Email Analysis - Attachments and Triage Summary](./screenshots/phishing_email_sample_analysis_2.png)
 
-<details>
-<summary>Click to view raw text output</summary>
-
-```text
-[*] Ingesting and analyzing: samples/test_phish.eml
-=================================================================
-             PHISHING EMAIL ANALYSIS REPORT
-=================================================================
-Subject       : Urgent: Verify Your Account Within 24 Hours
-From          : PayPal Security <security@paypal.com>
-Reply-To      : attacker-inbox@gmail.com
-Return-Path   : <bounce@phish-delivery-server.ru>
-Originating IP: 185.220.101.5
-Total Hops    : 2
-
------------------------------------------------------------------
-1. HEADER SECURITY AUDIT (4 flags)
------------------------------------------------------------------
-  [HIGH]     REPLY_TO_MISMATCH: Reply-To domain (gmail.com) does not match From domain (paypal.com)
-  [MEDIUM]   RETURN_PATH_MISMATCH: Return-Path domain (phish-delivery-server.ru) does not match From domain (paypal.com)
-  [CRITICAL] DMARC_FAIL: DMARC authentication failed (Domain alignment or policy violation)
-  [MEDIUM]   SPF_SOFTFAIL: SPF softfail: sending server is likely unauthorized
-
------------------------------------------------------------------
-2. URL & HYPERLINK AUDIT (3 flags across 2 URLs)
------------------------------------------------------------------
-  [CRITICAL] DECEPTIVE_HYPERLINK: Disguised Link: Text displays 'https://www.paypal.com/security-login' but links to 'http://185.220.101.5/login.php'
-  [HIGH]     IP_BASED_URL: URL uses raw IP address instead of domain name: http://185.220.101.5/login.php
-  [CRITICAL] VIRUSTOTAL_MALICIOUS_URL: VirusTotal flagged URL as malicious (12 engines): http://185.220.101.5/login.php
-
------------------------------------------------------------------
-3. ATTACHMENT AUDIT (2 flags across 1 files)
------------------------------------------------------------------
-  File: Invoice_2026.pdf.exe | Size: 59B | SHA256: 53c34bd0d49284b8...
-
-  [HIGH]     DANGEROUS_EXTENSION: Attachment 'Invoice_2026.pdf.exe' uses high-risk executable or script extension (.exe)
-  [CRITICAL] DOUBLE_EXTENSION: Double extension detected: 'Invoice_2026.pdf.exe' masks executable (.exe) as document (.pdf)
-
-=================================================================
-                    TRIAGE SUMMARY
-=================================================================
-Risk Score    : 100/100
-Verdict       : MALICIOUS / HIGH RISK
-Flags Total   : 9 (Critical: 3, High: 3, Medium: 2)
-Action Needed : Block sender domain/IP, purge email from all inboxes, and reset user credentials if clicked.
-=================================================================
-```
-</details>
-
 ---
 
 ## Project Structure
@@ -164,6 +115,3 @@ python analyzer.py samples/your_email.eml
 | **Threat Intel**| VirusTotal Detection | `CRITICAL` | Verified malicious signature or domain by external security vendors. |
 
 ---
-
-## Author
-Built by **Wess** as part of a hands-on cybersecurity portfolio focusing on blue team operations, threat detection, and email forensics.
