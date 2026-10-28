@@ -1,0 +1,32 @@
+From: "PayPal Security" <security@paypal.com>
+To: victim@example.com
+Reply-To: attacker-inbox@gmail.com
+Return-Path: <bounce@phish-delivery-server.ru>
+Subject: Urgent: Verify Your Account Within 24 Hours
+Date: Wed, 28 Oct 2026 12:00:00 +0000
+Message-ID: <987654.12345@phish-delivery-server.ru>
+Authentication-Results: mx.google.com; spf=softfail (google.com: domain of transitioning bounce@phish-delivery-server.ru does not designate 185.220.101.5 as permitted sender) smtp.mailfrom=bounce@phish-delivery-server.ru; dmarc=fail (p=REJECT) header.from=paypal.com
+Received: from mx.google.com (mx.google.com [172.217.16.27]) by internal-mail.com; Wed, 28 Oct 2026 12:00:02 +0000
+Received: from phish-delivery-server.ru (phish-delivery-server.ru [185.220.101.5]) by mx.google.com; Wed, 28 Oct 2026 12:00:01 +0000
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="BOUNDARY123"
+
+--BOUNDARY123
+Content-Type: text/html; charset="utf-8"
+
+<html>
+<body>
+<h2>Your PayPal Account has been restricted!</h2>
+<p>Please click below to verify your identity:</p>
+<a href="http://185.220.101.5/login.php">https://www.paypal.com/security-login</a>
+</body>
+</html>
+
+--BOUNDARY123
+Content-Type: application/octet-stream; name="Invoice_2026.pdf.exe"
+Content-Disposition: attachment; filename="Invoice_2026.pdf.exe"
+Content-Transfer-Encoding: base64
+
+TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+
+--BOUNDARY123--
